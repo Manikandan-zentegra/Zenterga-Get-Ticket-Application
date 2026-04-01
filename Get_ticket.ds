@@ -1,0 +1,1639 @@
+/*
+ * Author       : manikandan_zentegra411
+ * Generated on : 23-Feb-2026 20:42:51
+ * Version      : 1.0
+ */
+ application "Get ticket"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form Passenger
+		{
+			success message = "Passenger Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Passenger_Name
+			(
+    			type = name
+				displayname = "Passenger Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = large
+				personal data = true
+			)
+			must have Date_of_journey
+			(
+    			type = date
+				displayname = "Date of journey"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Gender
+			(
+				type = picklist
+				maxchar = 100
+				values = {"Male","Female","Trangender","Another gender"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Date_of_birth
+			(
+    			type = date
+				displayname = "Date of birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Age
+			(
+				type = number
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Phone_number1
+			(
+    			type = phonenumber
+				displayname = "Phone number"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have ID_Proof
+			(
+				type = picklist
+				displayname = "ID Proof"
+				maxchar = 100
+				values = {"Aadhar Card","PAN Card","Driving Licence","Voter ID (EPIC)","Passport","Ration Card"}
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Aadhar_number
+			(
+				type = number
+				displayname = "Aadhar number"
+				maxchar = 12
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Driving
+			(
+    			type = text
+				displayname = "Driving Licence"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			PAN_Card
+			(
+    			type = text
+				displayname = "PAN Card"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Passport
+			(
+    			type = text
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ration_Card
+			(
+    			type = text
+				displayname = "Ration Card"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Voter_ID
+			(
+    			type = text
+				displayname = "Voter ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Email1
+			(
+    			type = email
+				displayname = "Email "
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have From_Station
+			(
+				type = picklist
+				displayname = "From Stop"
+				maxchar = 100
+				values = {"New delhi","Ahamadabad","Hyderabad","Kochi","Mumbai","Chennai","Bengaluru"}
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have To_Station
+			(
+				type = picklist
+				displayname = "To Stop"
+				maxchar = 100
+				values = {"Mumbai","Chennai","Bengaluru","Ahamadabad","New delhi","Hyderabad","Kochi"}
+				sortorder = ascending
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Select_Seat
+			(
+				type = list	
+				displayname = "Select Seat "
+				values = {"Seat 1","Seat 2","Seat 3","Seat 4","Seat 5","Seat 6","Seat 7","Seat 8","Seat 9","Seat 10","Seat 11","Seat 12","Seat 13","Seat 14","Seat 15","Seat 16","Seat 17","Seat 18","Seat 19","Seat 20"}
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Class
+			(
+				type = picklist
+				maxchar = 100
+				values = {"AC Sleeper","AC Chair","Non -AC Sleeper","Non -AC Chair"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Food_preferences
+			(
+				type = picklist
+				displayname = "Food preferences"
+				maxchar = 100
+				values = {"Veg","Non - veg","Any (veg or non-veg)"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Ticket_price
+			(
+				displayname = "Ticket price"
+				type = INR
+				format = commadotindian
+				qrcode = true
+				show onload = true
+				camera = primary
+				preview duration = 5
+				show gallery = true
+				switch camera = true
+				submit onscan = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			QR_Code
+			(
+				type = qrcode
+				displayname = "QR Code"
+				value = "https://creator.zoho.in/appbuilder/manikandan_zentegra411/get-ticket/workflowbuilder/Ticket_price1/edit"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form QR_code
+		{
+			displayname = "QR code"
+			success message = "Qr Code Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Bar_code
+			(
+				type = barcode
+				displayname = "Bar code"
+				value = "${ID}"
+				barcode type = "Code-128"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Image_ID
+			(
+				type = number
+				displayname = "Image ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form test
+		{
+			success message = "Test Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			Currency
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Passengers
+		{
+			displayName = "All Passengers"
+			show all rows from Passenger    
+			(
+				Passenger_Name  as "Passenger Name"
+	 			(
+	      			displayformat = [first_name+""+prefix+""+last_name+""+suffix]
+	 			)
+				Phone_number1 as "Phone number"
+				(
+					displayformat = plainnumber 
+					linktodial = enable
+				)
+				Email1 as "Email "
+				From_Station as "From Stop"
+				To_Station as "To Stop"
+				Ticket_price as "Ticket price"
+				Class
+				QR_Code as "QR Code"
+				Age
+				Date_of_birth as "Date of birth"
+				Gender
+				ID_Proof as "ID Proof"
+				Food_preferences as "Food preferences"
+				PAN_Card as "PAN Card"
+				Passport
+				Ration_Card as "Ration Card"
+				Voter_ID as "Voter ID"
+				Driving as "Driving Licence"
+				Aadhar_number as "Aadhar number"
+				Date_of_journey as "Date of journey"
+				Select_Seat as "Select Seat "
+			)
+		}
+		default list All_Qr_Codes
+		{
+			displayName = "All Qr Codes"
+			show all rows from QR_code    
+			(
+				Bar_code as "Bar code"
+				Image_ID as "Image ID"
+			)
+		}
+		default list All_Tests
+		{
+			displayName = "All Tests"
+			show all rows from test    
+			(
+				Currency
+			)
+		}
+	}
+	pages
+	{
+		page frontend
+		{
+			displayname = "frontend"
+			Content="<zml    \t\t\n\t\t\n\t\t\n\t\t\n\t\t\n>\n\t<layout>\n\t<row>\n\t<column\n   \t\t width='100%'\n   \t>\n\t<dsp id='html_snippet' elementName='HTML Snippet'\n bgColor=\"#FFFFFF\" \n>\n\t<![CDATA[htmlpage html_snippet()\ncontent\n&lt;%{\n\t%&gt;\n&lt;head&gt;\n    &lt;meta charset=&quot;UTF-8&quot;&gt;\n    &lt;title&gt;Ticket Bill&lt;/title&gt;\n    &lt;style&gt;\n        body {\n            font-family: &quot;Segoe UI&quot;, Arial, sans-serif;\n            background: #f4f6f8;\n            padding: 20px;\n        }\n\n        .invoice-box {\n            max-width: 600px;\n            margin: auto;\n            background: #ffffff;\n            padding: 25px;\n            border-radius: 10px;\n            box-shadow: 0 8px 20px rgba(0,0,0,0.08);\n        }\n\n        .header {\n            text-align: center;\n            border-bottom: 2px dashed #ddd;\n            padding-bottom: 15px;\n        }\n\n        .header h1 {\n            margin: 0;\n            color: #2c3e50;\n        }\n\n        .header p {\n            margin: 4px 0;\n            color: #777;\n            font-size: 14px;\n        }\n\n        .details {\n            margin-top: 20px;\n        }\n\n        .details table {\n            width: 100%;\n            border-collapse: collapse;\n            font-size: 14px;\n        }\n\n        .details td {\n            padding: 10px;\n            border-bottom: 1px solid #eee;\n        }\n\n        .details td:first-child {\n            color: #555;\n            width: 40%;\n        }\n\n        .route {\n            background: #f0f4ff;\n            padding: 12px;\n            border-radius: 8px;\n            margin: 20px 0;\n            text-align: center;\n            font-weight: bold;\n            color: #34495e;\n        }\n\n        .amount {\n            text-align: right;\n            margin-top: 20px;\n        }\n\n        .amount h2 {\n            margin: 0;\n            color: #27ae60;\n        }\n\n        .footer {\n            margin-top: 25px;\n            text-align: center;\n            font-size: 13px;\n            color: #777;\n        }\n\n        .badge {\n            display: inline-block;\n            padding: 5px 12px;\n            background: #27ae60;\n            color: #fff;\n            border-radius: 20px;\n            font-size: 12px;\n            margin-top: 8px;\n        }\n    &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n\n&lt;div class=&quot;invoice-box&quot;&gt;\n\n    &lt;div class=&quot;header&quot;&gt;\n        &lt;h1&gt;Travel Ticket Bill&lt;/h1&gt;\n        &lt;p&gt;Thank you for choosing our service&lt;/p&gt;\n        &lt;span class=&quot;badge&quot;&gt;PAID&lt;/span&gt;\n    &lt;/div&gt;\n\n    &lt;div class=&quot;details&quot;&gt;\n        &lt;table&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Passenger Name&lt;/td&gt;\n                &lt;td&gt;Manikandan&lt;/td&gt;\n            &lt;/tr&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Phone Number&lt;/td&gt;\n                &lt;td&gt;+91 86089 44648&lt;/td&gt;\n            &lt;/tr&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Email&lt;/td&gt;\n                &lt;td&gt;passenger@email.com&lt;/td&gt;\n            &lt;/tr&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Booking ID&lt;/td&gt;\n                &lt;td&gt;#TRV10245&lt;/td&gt;\n            &lt;/tr&gt;\n            &lt;tr&gt;\n                &lt;td&gt;Journey Date&lt;/td&gt;\n                &lt;td&gt;12 Feb 2026&lt;/td&gt;\n            &lt;/tr&gt;\n        &lt;/table&gt;\n    &lt;/div&gt;\n\n    &lt;div class=&quot;route&quot;&gt;\n        Chennai \u279D Bengaluru\n    &lt;/div&gt;\n\n    &lt;div class=&quot;amount&quot;&gt;\n        &lt;p&gt;Total Amount&lt;/p&gt;\n        &lt;h2&gt;\u20B9 249&lt;/h2&gt;\n    &lt;/div&gt;\n\n    &lt;div class=&quot;footer&quot;&gt;\n        &lt;p&gt;This is a system generated bill.&lt;/p&gt;\n        &lt;p&gt;Have a safe &amp; happy journey &lt;/p&gt;\n    &lt;/div&gt;\n\n&lt;/div&gt;\n\n&lt;/body&gt;\n&lt;/html&gt;\n&lt;%\n\n}%&gt;]]>\n</dsp>\n</column>\n</row>\n</layout>\n</zml>"
+		}
+	}
+
+
+		 functions
+		 {
+			 Deluge
+			 {
+				 void test(Passenger test_obj)
+                 {
+                 	info "test";
+                 }
+			 }
+		 }
+		workflow
+		{
+		form
+		{
+			Load_of_hide_fields as "Load-of-hide-fields"
+			{
+				type =  form
+				form = Passenger
+
+				record event = on add or edit
+
+				on load
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											hide Aadhar_number;
+										hide Driving;
+										hide PAN_Card;
+										hide Ration_Card;
+										hide Voter_ID;
+										hide Passport;
+										disable Ticket_price;
+										// if(ID_Proof == "Aadhar Card")
+										// {
+										// 	show Aadhar_number;
+										// }
+										// else if(ID_Proof == "Driving Licence")
+										// {
+										// 	show Driving;
+										// }
+										// else if(ID_Proof == "PAN Card")
+										// {
+										// 	show PAN_Card;
+										// }
+										// else if(ID_Proof == "Passport")
+										// {
+										// 	show Passport;
+										// }
+										// else if(ID_Proof == "Ration Card")
+										// {
+										// 	show Ration_Card;
+										// }
+										// else if(ID_Proof == "Voter ID (EPIC)")
+										// {
+										// 	show Voter_ID;
+										// }
+										// else
+										// {
+										// 	hide Aadhar_number;
+										// 	hide Driving;
+										// 	hide PAN_Card;
+										// 	hide Ration_Card;
+										// 	hide Voter_ID;
+										// 	hide Passport;
+										// }
+						)
+					}
+				}
+
+			}
+			ID_Proof_validation as "ID Proof validation"
+			{
+				type =  form
+				form = Passenger
+
+				record event = on add or edit
+
+				on user input of ID_Proof
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(ID_Proof == "Aadhar Card")
+										{
+											show Aadhar_number;
+										}
+										else
+										{
+											hide Aadhar_number;
+										}
+										// hide Driving;
+										if(ID_Proof == "Driving Licence")
+										{
+											show Driving;
+										}
+										else
+										{
+											hide Driving;
+										}
+										// hide PAN_Card;
+										if(ID_Proof == "PAN Card")
+										{
+											show PAN_Card;
+										}
+										else
+										{
+											hide PAN_Card;
+										}
+										// hide Passport;
+										// hide Ration_Card;
+										if(ID_Proof == "Ration Card")
+										{
+											show Ration_Card;
+										}
+										else
+										{
+											hide Ration_Card;
+										}
+										// hide Voter_ID;
+										if(ID_Proof == "Voter ID (EPIC)")
+										{
+											show Voter_ID;
+										}
+										else
+										{
+											hide Voter_ID;
+										}
+										if(ID_Proof == "Passport")
+										{
+											show Passport;
+										}
+										else
+										{
+											hide Passport;
+										}
+										// seats = input.Select_Seat.size();
+										// if(Ticket_price == null)
+										// {
+										// 	input.Ticket_price = 0;
+										// }
+										// Ticket = input.Ticket_price * seats;
+										// info Ticket;
+						)
+					}
+				}
+
+			}
+			Ticket_bill as "Ticket bill"
+			{
+				type =  form
+				form = Passenger
+
+				record event = on add or edit
+
+				on success
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(From_Station == "Ahamadabad" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Chennai")
+										{
+											input.Ticket_price = "599";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "349";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Chennai")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "149";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "849";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "105";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "359";
+										}
+										else if(From_Station == "Chennai" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "799";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "399";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "149";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "chennai")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "459";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "799";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "399";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "149";
+										}
+										else if(From_Station == "Kochi" && To_Station == "chennai")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "459";
+										}
+										else if(From_Station == "Kochi" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "799";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "499";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "349";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "chennai")
+										{
+											input.Ticket_price = "299";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "899";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "749";
+										}
+										else if(From_Station == "New delhi" && To_Station == "chennai")
+										{
+											input.Ticket_price = "849";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "649";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "949";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "379";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "689";
+										}
+										else if(From_Station == To_Station)
+										{
+											info "From and To stations cannot be the same";
+										}
+										else
+										{
+											info "Invalid statement";
+										}
+										ticket_html = "";
+										ticket_html = ticket_html + "<html>";
+										ticket_html = ticket_html + "<head><meta charset='UTF-8'><title>Ticket Bill</title></head>";
+										ticket_html = ticket_html + "<body style='margin:0;padding:20px;background:#f4f6f8;font-family:Segoe UI,Arial;'>";
+										ticket_html = ticket_html + "<table width='100%' cellspacing='0' cellpadding='0'><tr><td align='center'>";
+										ticket_html = ticket_html + "<table width='600' style='background:#ffffff;border-radius:10px;padding:25px;'>";
+										ticket_html = ticket_html + "<tr><td style='text-align:center;border-bottom:2px dashed #ddd;padding-bottom:15px;'>";
+										ticket_html = ticket_html + "<h1 style='margin:0;color:#2c3e50;'>Welcome to Get ticket</h1>";
+										ticket_html = ticket_html + "<p style='color:#777;font-size:14px;'>Thank you for choosing our service</p>";
+										ticket_html = ticket_html + "<span style='background:#27ae60;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;'>PAID ✅</span>";
+										ticket_html = ticket_html + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td>";
+										ticket_html = ticket_html + "<table width='100%' style='font-size:14px;margin-top:20px;'>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passenger Name</td><td style='padding:10px;'>" + input.Passenger_Name + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Date of journey</td><td style='padding:10px;'>" + input.Date_of_journey + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Gender</td><td style='padding:10px;'>" + input.Gender + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Date of birth</td><td style='padding:10px;'>" + input.Date_of_birth + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Age</td><td style='padding:10px;'>" + input.Age + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passenger ID Proof</td><td style='padding:10px;'>" + input.ID_Proof + "</td></tr>";
+										if(input.Aadhar_number != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Aadhar</td><td style='padding:10px;'>" + input.Aadhar_number + "</td></tr>";
+										}
+										else if(input.Driving != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Driving</td><td style='padding:10px;'>" + input.Driving + "</td></tr>";
+										}
+										else if(input.PAN_Card != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>PAN Card</td><td style='padding:10px;'>" + input.PAN_Card + "</td></tr>";
+										}
+										else if(input.Passport != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passport</td><td style='padding:10px;'>" + input.Passport + "</td></tr>";
+										}
+										else if(input.Ration_Card != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Ration card</td><td style='padding:10px;'>" + input.Ration_Card + "</td></tr>";
+										}
+										else if(input.Voter_ID != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Voter ID</td><td style='padding:10px;'>" + input.Voter_ID + "</td></tr>";
+										}
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Phone</td><td style='padding:10px;'>" + input.Phone_number1 + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Journey from</td><td style='padding:10px;'>" + input.From_Station + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Journey to</td><td style='padding:10px;'>" + input.To_Station + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Seat Booked</td><td style='padding:10px;'>" + input.Select_Seat + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Class</td><td style='padding:10px;'>" + input.Class + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passenger food Preference</td><td style='padding:10px;'>" + input.Food_preferences + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Per ticket price</td><td style='padding:10px;color:#27ae60;font-weight:bold;'>" + input.Ticket_price + "</td></tr>";
+										seats = input.Select_Seat.size();
+										if(Ticket_price == null)
+										{
+											input.Ticket_price = 0;
+										}
+										input.Ticket_price = input.Ticket_price * seats;
+										// info Ticket_price;
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Total seat booked</td><td style='padding:10px;color:#27ae60;font-weight:bold;'>" + seats + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Ticket price</td><td style='padding:10px;color:#27ae60;font-weight:bold;'>" + input.Ticket_price + "</td></tr>";
+										ticket_html = ticket_html + "<tr>" + "<td style='padding:10px;color:#555;'>QR code</td>" + "<td style='padding:10px;color:#27ae60;font-weight:bold;'>" + "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + input.Ticket_price + "'style='width:120px;height:120px;'>" + "</td>" + "</tr>";
+										ticket_html = ticket_html + "</table>";
+										ticket_html = ticket_html + "</td></tr>";
+										ticket_html = ticket_html + "</table>";
+										ticket_html = ticket_html + "</td></tr></table>";
+										ticket_html = ticket_html + "</body></html>";
+										sendmail
+										[
+											from :"manikandan@zentegra.com"
+											to :input.Email1
+											cc:"manikandansjobzen@gmail.com"
+											reply to :"manikandan@zentegra.com"
+											subject :"Welcome to Zoho Creator"
+											message :ticket_html
+										]
+						)
+					}
+				}
+
+			}
+			Amount_Merging as "Amount-Merging"
+			{
+				type =  form
+				form = Passenger
+
+				record event = on add or edit
+
+				on user input of Class
+				{
+					actions 
+					{
+						custom deluge script
+						(
+											if(From_Station == "Ahamadabad" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Chennai")
+										{
+											input.Ticket_price = "599";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "349";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Ahamadabad" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Chennai")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "149";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "849";
+										}
+										else if(From_Station == "Bengaluru" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "249";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "105";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "359";
+										}
+										else if(From_Station == "Chennai" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "799";
+										}
+										else if(From_Station == "Chennai" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "399";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "149";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "chennai")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "459";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "799";
+										}
+										else if(From_Station == "Hyderabad" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "399";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "149";
+										}
+										else if(From_Station == "Kochi" && To_Station == "chennai")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "459";
+										}
+										else if(From_Station == "Kochi" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "799";
+										}
+										else if(From_Station == "Kochi" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "499";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "199";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "349";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "chennai")
+										{
+											input.Ticket_price = "299";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "New delhi")
+										{
+											input.Ticket_price = "899";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "Mumbai" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "449";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Bengaluru")
+										{
+											input.Ticket_price = "749";
+										}
+										else if(From_Station == "New delhi" && To_Station == "chennai")
+										{
+											input.Ticket_price = "849";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Hyderabad")
+										{
+											input.Ticket_price = "649";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Kochi")
+										{
+											input.Ticket_price = "949";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Ahamadabad")
+										{
+											input.Ticket_price = "379";
+										}
+										else if(From_Station == "New delhi" && To_Station == "Mumbai")
+										{
+											input.Ticket_price = "689";
+										}
+										else if(From_Station == To_Station)
+										{
+											info "From and To stations cannot be the same";
+										}
+										else
+										{
+											info "Invalid statement";
+										}
+										ticket_html = "";
+										ticket_html = ticket_html + "<html>";
+										ticket_html = ticket_html + "<head><meta charset='UTF-8'><title>Ticket Bill</title></head>";
+										ticket_html = ticket_html + "<body style='margin:0;padding:20px;background:#f4f6f8;font-family:Segoe UI,Arial;'>";
+										ticket_html = ticket_html + "<table width='100%' cellspacing='0' cellpadding='0'><tr><td align='center'>";
+										ticket_html = ticket_html + "<table width='600' style='background:#ffffff;border-radius:10px;padding:25px;'>";
+										ticket_html = ticket_html + "<tr><td style='text-align:center;border-bottom:2px dashed #ddd;padding-bottom:15px;'>";
+										ticket_html = ticket_html + "<h1 style='margin:0;color:#2c3e50;'>Welcome to Get ticket</h1>";
+										ticket_html = ticket_html + "<p style='color:#777;font-size:14px;'>Thank you for choosing our service</p>";
+										ticket_html = ticket_html + "<span style='background:#27ae60;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;'>PAID ✅</span>";
+										ticket_html = ticket_html + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td>";
+										ticket_html = ticket_html + "<table width='100%' style='font-size:14px;margin-top:20px;'>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passenger Name</td><td style='padding:10px;'>" + input.Passenger_Name + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Date of journey</td><td style='padding:10px;'>" + input.Date_of_journey + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Gender</td><td style='padding:10px;'>" + input.Gender + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Date of birth</td><td style='padding:10px;'>" + input.Date_of_birth + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Age</td><td style='padding:10px;'>" + input.Age + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passenger ID Proof</td><td style='padding:10px;'>" + input.ID_Proof + "</td></tr>";
+										if(input.Aadhar_number != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Aadhar</td><td style='padding:10px;'>" + input.Aadhar_number + "</td></tr>";
+										}
+										else if(input.Driving != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Driving</td><td style='padding:10px;'>" + input.Driving + "</td></tr>";
+										}
+										else if(input.PAN_Card != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>PAN Card</td><td style='padding:10px;'>" + input.PAN_Card + "</td></tr>";
+										}
+										else if(input.Passport != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passport</td><td style='padding:10px;'>" + input.Passport + "</td></tr>";
+										}
+										else if(input.Ration_Card != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Ration card</td><td style='padding:10px;'>" + input.Ration_Card + "</td></tr>";
+										}
+										else if(input.Voter_ID != null)
+										{
+											ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Voter ID</td><td style='padding:10px;'>" + input.Voter_ID + "</td></tr>";
+										}
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Phone</td><td style='padding:10px;'>" + input.Phone_number1 + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Journey from</td><td style='padding:10px;'>" + input.From_Station + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Journey to</td><td style='padding:10px;'>" + input.To_Station + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Seat Booked</td><td style='padding:10px;'>" + input.Select_Seat + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Class</td><td style='padding:10px;'>" + input.Class + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Passenger food Preference</td><td style='padding:10px;'>" + input.Food_preferences + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Per ticket price</td><td style='padding:10px;color:#27ae60;font-weight:bold;'>" + input.Ticket_price + "</td></tr>";
+										seats = input.Select_Seat.size();
+										if(Ticket_price == null)
+										{
+											input.Ticket_price = 0;
+										}
+										input.Ticket_price = input.Ticket_price * seats;
+										// info Ticket_price;
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Total seat booked</td><td style='padding:10px;color:#27ae60;font-weight:bold;'>" + seats + "</td></tr>";
+										ticket_html = ticket_html + "<tr><td style='padding:10px;color:#555;'>Ticket price</td><td style='padding:10px;color:#27ae60;font-weight:bold;'>" + input.Ticket_price + "</td></tr>";
+										ticket_html = ticket_html + "<tr>" + "<td style='padding:10px;color:#555;'>QR code</td>" + "<td style='padding:10px;color:#27ae60;font-weight:bold;'>" + "<img src='https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + input.Ticket_price + "'style='width:120px;height:120px;'>" + "</td>" + "</tr>";
+										ticket_html = ticket_html + "</table>";
+										ticket_html = ticket_html + "</td></tr>";
+										ticket_html = ticket_html + "</table>";
+										ticket_html = ticket_html + "</td></tr></table>";
+										ticket_html = ticket_html + "</body></html>";
+										sendmail
+										[
+											from :"manikandan@zentegra.com"
+											to :input.Email1
+											cc:"manikandansjobzen@gmail.com"
+											reply to :"manikandan@zentegra.com"
+											subject :"Welcome to Zoho Creator"
+											message :ticket_html
+										]
+						)
+					}
+				}
+
+			}
+		}
+
+
+
+
+
+
+	}
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form Passenger
+			{
+				label placement = top
+			}
+			form QR_code
+			{
+				label placement = left
+			}
+			form test
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Passengers
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Passenger_Name as "Passenger Name"
+								Phone_number1 as "Phone number"
+								Email1 as "Email "
+								From_Station as "From Stop"
+								To_Station as "To Stop"
+								Ticket_price as "Ticket price"
+								Class
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Passenger_Name as "Passenger Name"
+								Phone_number1 as "Phone number"
+								Email1 as "Email "
+								From_Station as "From Stop"
+								To_Station as "To Stop"
+								Ticket_price as "Ticket price"
+								Class
+								QR_Code as "QR Code"
+								Age
+								Date_of_birth as "Date of birth"
+								Gender
+								ID_Proof as "ID Proof"
+								Food_preferences as "Food preferences"
+								PAN_Card as "PAN Card"
+								Passport
+								Ration_Card as "Ration Card"
+								Voter_ID as "Voter ID"
+								Driving as "Driving Licence"
+								Aadhar_number as "Aadhar number"
+								Date_of_journey as "Date of journey"
+								Select_Seat as "Select Seat "
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Qr_Codes
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Bar_code as "Bar code"
+								Image_ID as "Image ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Bar_code as "Bar code"
+								Image_ID as "Image ID"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report All_Tests
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								Currency
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+							fields
+							(
+								Currency
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Passengers
+				{
+					displayname = "Passengers"
+					icon = "transportation-train-speed"
+					form  Passenger
+					{
+						icon = "transportation-boat-front"
+					}
+					report All_Passengers
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+				section frontend
+				{
+					displayname = "frontend"
+					icon = "tech-desktop"
+					page frontend
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Qr_Codes
+				{
+					displayname = "Qr Codes"
+					icon = "shopping-bardcode-qr"
+					form  QR_code
+					{
+						icon = "shopping-bardcode-qr"
+					}
+					report All_Qr_Codes
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Tests
+				{
+					displayname = "Tests"
+					icon = "education-flask"
+					form  test
+					{
+						icon = "education-flask"
+					}
+					report All_Tests
+					{
+						icon = "tech-desktop"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			layout
+			{
+				theme = "theme_8"
+			}
+			font = "lato"
+			color options
+			{
+				color = "12"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form Passenger
+			{
+				label placement = auto
+			}
+			form QR_code
+			{
+				label placement = auto
+			}
+			form test
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = red
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form Passenger
+			{
+				label placement = auto
+			}
+			form QR_code
+			{
+				label placement = auto
+			}
+			form test
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = red
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
